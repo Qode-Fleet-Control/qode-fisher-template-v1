@@ -22,7 +22,7 @@ fish -i -c '
   set -q autopair_pairs;          and ok "autopair.fish loaded (conf.d ran)"; or bad "autopair.fish conf.d did not run"
   functions -q _autopair_insert_left; and ok "autopair.fish functions";      or bad "autopair.fish functions missing"
   functions -q replay;            and ok "replay.fish loaded";               or bad "replay.fish not loaded"
-  test (replay "set -gx QODE_REPLAYED yes"; echo $QODE_REPLAYED) = yes
+  test (replay "export QODE_REPLAYED=yes"; echo $QODE_REPLAYED) = yes
                                   and ok "replay runs a bash line";          or bad "replay did not work"
   test (qode_hello) = "hello from qode"; and ok "qode_hello works";         or bad "qode_hello output"
   set -l rendered (fish_prompt | string replace -ra "\e\[[0-9;]*m" "" | string replace -ra "\e\(B" "")
